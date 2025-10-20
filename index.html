@@ -28,6 +28,11 @@
             width: 50%;
             height: 50%;
         }
+        
+        /* Hide rose paths initially */
+        .leafOne, .stickLine, .leafTwo, .leafS1, .rose1, .rose2, .rose3, .rose4 {
+            opacity: 0;
+        }
     </style>
 
     <!-- aa2 -->
@@ -606,10 +611,276 @@
         .mewmew2 img {
             width: 100%;
         }
+        
+        /* Music Control Button */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+            z-index: 10000;
+            transition: all 0.3s ease;
+            border: 3px solid #fff;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+        
+        .music-control i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .music-control.playing i {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .music-control {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .music-control i {
+                font-size: 20px;
+            }
+        }
+        
+        /* Hide YouTube Player */
+        #youtube-player {
+            position: fixed;
+            bottom: -100%;
+            left: -100%;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Welcome Screen */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .welcome-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .welcome-content {
+            text-align: center;
+            animation: welcomeFadeIn 1.5s ease;
+        }
+        
+        .welcome-content h1 {
+            font-size: 60px;
+            color: #fff;
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .welcome-content p {
+            font-size: 24px;
+            color: #fff;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            margin-bottom: 30px;
+            margin-left: 100px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .enter-button {
+            padding: 18px 50px;
+            font-size: 22px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse-btn 2s ease-in-out infinite;
+            margin-top: 70px;
+        }
+        
+        .enter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(245, 87, 108, 0.6);
+        }
+        
+        .enter-button:active {
+            transform: translateY(0);
+        }
+        
+        @keyframes welcomeFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse-btn {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .welcome-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .welcome-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            transform: rotate(45deg);
+            animation: float-heart 6s ease-in-out infinite;
+        }
+        
+        .welcome-heart::before,
+        .welcome-heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+        
+        .welcome-heart::before {
+            top: -10px;
+            left: 0;
+        }
+        
+        .welcome-heart::after {
+            top: 0;
+            left: 10px;
+        }
+        
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(45deg) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-content h1 {
+                font-size: 45px;
+            }
+            
+            .welcome-content p {
+                font-size: 20px;
+                padding: 0 20px;
+                margin-bottom: 200px;
+            }
+            
+            .enter-button {
+                padding: 15px 40px;
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .welcome-content h1 {
+                font-size: 35px;
+            }
+            
+            .welcome-content p {
+                font-size: 18px;
+                margin-bottom: 200px;
+            }
+            
+            .enter-button {
+                padding: 12px 35px;
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-hearts">
+            <div class="welcome-heart" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="welcome-heart" style="left: 25%; animation-delay: 1s;"></div>
+            <div class="welcome-heart" style="left: 40%; animation-delay: 2s;"></div>
+            <div class="welcome-heart" style="left: 55%; animation-delay: 1.5s;"></div>
+            <div class="welcome-heart" style="left: 70%; animation-delay: 0.5s;"></div>
+            <div class="welcome-heart" style="left: 85%; animation-delay: 2.5s;"></div>
+        </div>
+        <div class="welcome-content">
+            <h1>💐 Happy Women's Day 💐</h1>
+            <p>Chào mừng bạn đến với lời chúc đặc biệt</p>
+            <button class="enter-button" id="enterButton">Bắt đầu 🎵</button>
+        </div>
+    </div>
+
+    <!-- YouTube Player (Hidden) -->
+    <div id="youtube-player"></div>
+    
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl" title="Click to pause music" style="display: none;">
+        <i class="fa-solid fa-music"></i>
+    </div>
 
     <svg style="display: none;" id="theSvg" viewBox="-120 -30 240 180" enable-background="new 0 0 174 148"
         xml:space="preserve">
@@ -831,7 +1102,7 @@
     </div>
 
 
-    <div class="container" id="rose-t">
+    <div class="container" id="rose-t" style="display: none;">
         <svg viewBox="0 0 512 512">
             <path class="leafOne" d="M124.302,328.222c-2.466-2.901-5.036-5.334-7.648-7.212c-1.884-1.354-4.49-1.207-6.201,0.36
                                     c-32.608,29.866-18.892,84.017,24.01,94.752c2.251,0.563,4.612-0.548,5.624-2.636c0.407-0.841,0.781-1.732,1.138-2.648
@@ -1116,6 +1387,7 @@
                 textCharLetterContent();
             }, 75)
         }
+        // Create confetti canvas for later use
         const canvas = document.createElement('canvas');
         canvas.style.position = 'fixed';
         canvas.style.top = 0;
@@ -1127,11 +1399,103 @@
         document.body.appendChild(canvas);
 
         const myConfetti = confetti.create(canvas, { resize: true });
-
-        myConfetti({
-            particleCount: 150,
-            spread: 100,
-            origin: { y: 0.6 }
+        
+        // YouTube Player Setup
+        var player;
+        var isPlaying = false;
+        var playerReady = false;
+        var musicControl = document.getElementById('musicControl');
+        var welcomeScreen = document.getElementById('welcomeScreen');
+        var enterButton = document.getElementById('enterButton');
+        
+        // Load YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        // YouTube API Ready callback
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '1',
+                width: '1',
+                videoId: 'JibubW6LP5Q', // Video ID from the YouTube URL
+                playerVars: {
+                    'autoplay': 0, // Don't autoplay until user clicks
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'JibubW6LP5Q', // Required for loop to work
+                    'playsinline': 1,
+                    'mute': 0
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        
+        // Player ready callback
+        function onPlayerReady(event) {
+            event.target.setVolume(30); // Set volume to 30%
+            playerReady = true;
+        }
+        
+        // Player state change callback
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                musicControl.classList.add('playing');
+                musicControl.querySelector('i').className = 'fa-solid fa-music';
+                musicControl.title = 'Click vào để tạm dừng nhạc';
+            } else if (event.data == YT.PlayerState.PAUSED) {
+                isPlaying = false;
+                musicControl.classList.remove('playing');
+                musicControl.querySelector('i').className = 'fa-solid fa-volume-xmark';
+                musicControl.title = 'Click vào để phát nhạc';
+            }
+        }
+        
+        // Enter button click handler - START MUSIC
+        enterButton.addEventListener('click', function() {
+            // Confetti celebration!
+            myConfetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            
+            // Hide welcome screen
+            welcomeScreen.classList.add('hidden');
+            
+            // Show music control button
+            musicControl.style.display = 'flex';
+            
+            // Show the main content (rose)
+            document.getElementById('rose-t').style.display = 'flex';
+            
+            // Start playing music
+            if (player && playerReady) {
+                player.playVideo();
+            }
+            
+            // Remove welcome screen completely after animation
+            setTimeout(function() {
+                welcomeScreen.style.display = 'none';
+                // Start drawing rose animation after welcome screen fades out
+                lineDrawing.play();
+            }, 800);
+        });
+        
+        // Music control button click handler
+        musicControl.addEventListener('click', function() {
+            if (player && player.getPlayerState) {
+                if (isPlaying) {
+                    player.pauseVideo();
+                } else {
+                    player.playVideo();
+                }
+            }
         });
         
         $(document).ready(function () {
@@ -1171,27 +1535,35 @@
             duration: 3500,
             begin: function (anim) {
                 //Leaf One
+                leafOne.style.opacity = "1";
                 leafOne.setAttribute("stroke", "black");
                 leafOne.setAttribute("fill", "none");
                 // Leaf Two
+                leafTwo.style.opacity = "1";
                 leafTwo.setAttribute("stroke", "black");
                 leafTwo.setAttribute("fill", "none");
                 //Stick
+                stickLine.style.opacity = "1";
                 stickLine.setAttribute("stroke", "black");
                 stickLine.setAttribute("fill", "none");
                 // Leaf S1
+                leafS1.style.opacity = "1";
                 leafS1.setAttribute("stroke", "black");
                 leafS1.setAttribute("fill", "none");
                 //Rose One
+                rose1.style.opacity = "1";
                 rose1.setAttribute("stroke", "black");
                 rose1.setAttribute("fill", "none");
                 //Rose Two
+                rose2.style.opacity = "1";
                 rose2.setAttribute("stroke", "black");
                 rose2.setAttribute("fill", "none");
                 //Rose Three
+                rose3.style.opacity = "1";
                 rose3.setAttribute("stroke", "black");
                 rose3.setAttribute("fill", "none");
-                //Rose Three
+                //Rose Four
+                rose4.style.opacity = "1";
                 rose4.setAttribute("stroke", "black");
                 rose4.setAttribute("fill", "none");
             },
@@ -1221,7 +1593,7 @@
                 rose4.setAttribute("fill", "#D86666");
                 rose4.setAttribute("stroke", "none");
             },
-            autoplay: true,
+            autoplay: false,
         });
 
     </script>
