@@ -420,6 +420,30 @@
             -moz-osx-font-smoothing: grayscale;
             opacity: .8
         }
+        
+        #text-click {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        #text-click:hover {
+            transform: scale(1.1);
+            color: #c9184a;
+            text-shadow: 2px 2px 8px rgba(201, 24, 74, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            #text-click {
+                font-size: 40px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #text-click {
+                font-size: 30px !important;
+            }
+        }
 
         .letters {
             position: absolute;
