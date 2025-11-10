@@ -444,6 +444,420 @@
                 font-size: 30px !important;
             }
         }
+        
+        /* Selection Screen */
+        .selection-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .selection-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .selection-content {
+            text-align: center;
+            animation: selectionFadeIn 1.5s ease;
+        }
+        
+        .selection-content h1 {
+            font-size: 50px;
+            color: #fff;
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .selection-buttons {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .selection-btn {
+            padding: 20px 45px;
+            font-size: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
+        .selection-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(245, 87, 108, 0.6);
+        }
+        
+        .selection-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .selection-btn.birthday {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            box-shadow: 0 8px 25px rgba(166, 193, 238, 0.4);
+        }
+        
+        .selection-btn.birthday:hover {
+            box-shadow: 0 12px 35px rgba(166, 193, 238, 0.6);
+        }
+        
+        @keyframes selectionFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .selection-sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle-float 4s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        @keyframes sparkle-float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-800px) scale(0.5);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .selection-content h1 {
+                font-size: 38px;
+            }
+
+            .selection-buttons {
+                gap: 20px;
+                padding: 0 20px;
+            }
+            
+            .selection-btn {
+                padding: 18px 40px;
+                font-size: 18px;
+                min-width: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .selection-content h1 {
+                font-size: 32px;
+            }
+            
+            .selection-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .selection-btn {
+                padding: 15px 35px;
+                font-size: 16px;
+                min-width: 160px;
+            }
+        }
+        
+        /* Birthday Page Styles */
+        .birthday-page {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .birthday-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .birthday-title {
+            font-size: 70px;
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .birthday-cake {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .birthday-cake:hover {
+            transform: scale(1.05);
+        }
+        
+        .cake-layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+        
+        .cake-layer-1 {
+            bottom: 0;
+            width: 250px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cake-layer-2 {
+            bottom: 75px;
+            width: 200px;
+            height: 70px;
+            background: linear-gradient(135deg, #feca57 0%, #ee5a6f 100%);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cake-layer-3 {
+            bottom: 140px;
+            width: 150px;
+            height: 60px;
+            background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .candle {
+            position: absolute;
+            bottom: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ff6b6b 0%, #ee5a6f 100%);
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .flame {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 30px;
+            background: radial-gradient(circle, #ffd93d 0%, #ff6b6b 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flicker 0.3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) translateY(0); }
+            100% { transform: translateX(-50%) scale(1.1) translateY(-3px); }
+        }
+        
+        @keyframes fadeInBirthday {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .birthday-click-hint {
+            font-size: 20px;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            color: #ffd93d;
+            animation: pulse-text 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+        
+        @keyframes pulse-text {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .balloon {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float-balloon 6s ease-in-out infinite;
+        }
+        
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .balloon-1 {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+        
+        .balloon-2 {
+            background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%);
+            right: 15%;
+            top: 30%;
+            animation-delay: 1s;
+        }
+        
+        .balloon-3 {
+            background: linear-gradient(135deg, #feca57 0%, #ee5a6f 100%);
+            left: 20%;
+            top: 60%;
+            animation-delay: 2s;
+        }
+        
+        .balloon-4 {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            right: 25%;
+            top: 70%;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes float-balloon {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-30px) translateX(10px);
+            }
+            50% {
+                transform: translateY(-50px) translateX(-10px);
+            }
+            75% {
+                transform: translateY(-30px) translateX(10px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .birthday-title {
+                font-size: 50px;
+            }
+            
+            .birthday-cake {
+                width: 250px;
+                height: 300px;
+            }
+            
+            .cake-layer-1 {
+                width: 200px;
+                height: 70px;
+            }
+            
+            .cake-layer-2 {
+                width: 160px;
+                height: 60px;
+                bottom: 65px;
+            }
+            
+            .cake-layer-3 {
+                width: 120px;
+                height: 50px;
+                bottom: 120px;
+            }
+            
+            .candle {
+                bottom: 170px;
+                height: 50px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .birthday-title {
+                font-size: 40px;
+            }
+            
+            .birthday-cake {
+                width: 200px;
+                height: 250px;
+            }
+            
+            .cake-layer-1 {
+                width: 180px;
+                height: 60px;
+            }
+            
+            .cake-layer-2 {
+                width: 140px;
+                height: 50px;
+                bottom: 55px;
+            }
+            
+            .cake-layer-3 {
+                width: 100px;
+                height: 40px;
+                bottom: 100px;
+            }
+            
+            .candle {
+                bottom: 140px;
+                height: 40px;
+                width: 12px;
+            }
+            
+            .balloon {
+                width: 60px;
+                height: 75px;
+            }
+        }
 
         .letters {
             position: absolute;
@@ -464,22 +878,25 @@
         }
 
         .wrapperLetterForm {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 1000;
+            z-index: 10000;
             background: rgba(0, 0, 0, 0.7);
             display: none;
+            overflow: auto;
         }
 
         .boxLetter {
             width: 100%;
-            height: 100%;
+            min-height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
         @keyframes letterPop {
         0% { transform: translateY(30px) scale(0.95); opacity: 0; }
@@ -881,8 +1298,27 @@
 </head>
 
 <body>
+    <!-- Selection Screen -->
+    <div class="selection-screen" id="selectionScreen">
+        <div class="selection-sparkles">
+            <div class="sparkle" style="left: 15%; animation-delay: 0s;"></div>
+            <div class="sparkle" style="left: 30%; animation-delay: 0.5s;"></div>
+            <div class="sparkle" style="left: 45%; animation-delay: 1s;"></div>
+            <div class="sparkle" style="left: 60%; animation-delay: 1.5s;"></div>
+            <div class="sparkle" style="left: 75%; animation-delay: 2s;"></div>
+            <div class="sparkle" style="left: 85%; animation-delay: 2.5s;"></div>
+        </div>
+        <div class="selection-content">
+            <h1>🎉 Chọn dịp đặc biệt 🎉</h1>
+            <div class="selection-buttons">
+                <button class="selection-btn womensday" id="womensDayBtn">🌷 Ngày Phụ Nữ 20/10</button>
+                <button class="selection-btn birthday" id="birthdayBtn">🎂 Sinh Nhật</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Welcome Screen -->
-    <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-screen" id="welcomeScreen" style="display: none;">
         <div class="welcome-hearts">
             <div class="welcome-heart" style="left: 10%; animation-delay: 0s;"></div>
             <div class="welcome-heart" style="left: 25%; animation-delay: 1s;"></div>
@@ -1188,6 +1624,37 @@
         </div> -->
 
 
+    <!-- Birthday Page -->
+    <div class="birthday-page" id="birthdayPage">
+        <!-- Balloons -->
+        <div class="balloon balloon-1"></div>
+        <div class="balloon balloon-2"></div>
+        <div class="balloon balloon-3"></div>
+        <div class="balloon balloon-4"></div>
+        
+        <div class="birthday-container">
+            <h1 class="birthday-title">🎂 Chúc Mừng Sinh Nhật! 🎂</h1>
+            
+            <div class="birthday-cake" id="birthdayCake">
+                <!-- Bottom Layer -->
+                <div class="cake-layer cake-layer-1"></div>
+                
+                <!-- Middle Layer -->
+                <div class="cake-layer cake-layer-2"></div>
+                
+                <!-- Top Layer -->
+                <div class="cake-layer cake-layer-3"></div>
+                
+                <!-- Candle -->
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            
+            <p class="birthday-click-hint">✨ Thổi nến và ước nguyện nào! ✨</p>
+        </div>
+    </div>
+
     <div class="wrapperLetterForm" style="display: none;">
         <div class="boxLetter">
             <i class="fa-solid fa-xmark"></i>
@@ -1306,7 +1773,10 @@
                 head.appendChild(animation);
                 dust.classList.add('dustDef');
                 dust.setAttribute('style', `animation: blink${animationId++} ${fallingTime}s cubic-bezier(.71, .11, .68, .83) infinite ${animationDelay}s`);
-                document.getElementById(node).appendChild(dust);
+                var targetNode = document.getElementById(node);
+                if (targetNode) {
+                    targetNode.appendChild(dust);
+                }
             }
 
             // yes, I'm doing it manually to get the effect I want.. can be easily changed to render randomly
@@ -1335,13 +1805,30 @@
     </script>
 
     <script>
+        // Theme content configurations (Define first before use)
+        var themeContent = {
+            womensday: {
+                welcomeTitle: "💐 Happy Women's Day 💐",
+                welcomeSubtitle: "Chào mừng bạn đến với lời chúc đặc biệt",
+                letterTitle: "Gửi Cẩm Lu!",
+                letterContent: `Nhân dịp 20/10, xin tặng trao Cẩm Lu những lời chúc ngọt ngào và tốt đẹp nhất. Chúc Lu luôn ngập tràn hạnh phúc, gặp nhiều may mắn, và giữ mãi nụ cười rạng rỡ như ánh nắng đầu ngày. Mong những điều bình yên, dịu dàng và ấm áp nhất sẽ luôn đồng hành cùng Lu — còn những muộn phiền, hãy để gió cuốn đi thật xa nha. 🌷`
+            },
+            birthday: {
+                welcomeTitle: "🎂 Happy Birthday 🎂",
+                welcomeSubtitle: "Chúc mừng sinh nhật thật nhiều niềm vui",
+                letterTitle: "Chúc mừng sinh nhật Cẩm Lu!",
+                letterContent: `Chúc mừng sinh nhật Cẩm Lu! 🎉 Chúc Lu tuổi mới thật nhiều sức khỏe, hạnh phúc tràn đầy, và thành công rực rỡ. Hy vọng mọi ước mơ của Lu đều trở thành hiện thực, mỗi ngày đều tràn ngập tiếng cười và niềm vui. Sinh nhật vui vẻ nha Lu! Hãy luôn giữ nụ cười rạng rỡ và tỏa sáng như chính mình. Chúc Lu một năm tuổi mới tuyệt vời nhất! 🎂🎈✨`
+            }
+        };
+        
         // .textLetter text h2
         let indexText = 0;
         let textLetter = document.querySelector('.textLetter h2');
-        const textLetterH2 = "Gửi Cẩm Lu!";
+        var textLetterH2 = themeContent.womensday.letterTitle;
         let timoutTextLetter;
 
         function textCharLetter() {
+            if (!textLetter) return;
             if (indexText < textLetterH2.length) {
                 textLetter.textContent += textLetterH2[indexText];
                 indexText++;
@@ -1355,6 +1842,7 @@
             }
         }
         function funcTimeoutLetter() {
+            if (!textLetter) return;
             indexText = 0; // Reset indexText
             textLetter.textContent = ''; // Xóa nội dung hiện tại của textLetter
             clearInterval(timoutTextLetter);
@@ -1389,10 +1877,11 @@
         // chữ của thư bạn muốn gửi
         let indexTextContent = 0;
         let textLetterContent = document.querySelector('.contentLetter');
-        const textLetterP = `Nhân dịp 20/10, xin tặng trao Cẩm Lu những lời chúc ngọt ngào và tốt đẹp nhất. Chúc Lu luôn ngập tràn hạnh phúc, gặp nhiều may mắn, và giữ mãi nụ cười rạng rỡ như ánh nắng đầu ngày. Mong những điều bình yên, dịu dàng và ấm áp nhất sẽ luôn đồng hành cùng Lu — còn những muộn phiền, hãy để gió cuốn đi thật xa nha. 🌷`;
+        var textLetterP = themeContent.womensday.letterContent;
         let timoutTextLetterContent;
         let buffer = '';
         function textCharLetterContent() {
+            if (!textLetterContent) return;
             if (indexTextContent < textLetterP.length) {
                 textLetterContent.textContent += textLetterP[indexTextContent];
                 indexTextContent++;
@@ -1404,6 +1893,7 @@
             }
         }
         function funcTimeoutLetterContent() {
+            if (!textLetterContent) return;
             indexTextContent = 0; // Reset indexTextContent
             textLetterContent.textContent = ''; // Xóa nội dung hiện tại của textLetter
             clearInterval(timoutTextLetterContent);
@@ -1423,6 +1913,12 @@
         document.body.appendChild(canvas);
 
         const myConfetti = confetti.create(canvas, { resize: true });
+        
+        // Selection and Theme Setup
+        var selectedTheme = 'womensday'; // Default theme
+        var selectionScreen = document.getElementById('selectionScreen');
+        var womensDayBtn = document.getElementById('womensDayBtn');
+        var birthdayBtn = document.getElementById('birthdayBtn');
         
         // YouTube Player Setup
         var player;
@@ -1478,6 +1974,98 @@
                 musicControl.querySelector('i').className = 'fa-solid fa-volume-xmark';
                 musicControl.title = 'Click vào để phát nhạc';
             }
+        }
+        
+        // Selection button click handlers
+        womensDayBtn.addEventListener('click', function() {
+            selectedTheme = 'womensday';
+            updateTheme();
+            showWelcomeScreen();
+        });
+        
+        birthdayBtn.addEventListener('click', function() {
+            selectedTheme = 'birthday';
+            updateTheme();
+            showBirthdayFlow();
+        });
+        
+        // Update theme content based on selection
+        function updateTheme() {
+            var theme = themeContent[selectedTheme];
+            textLetterH2 = theme.letterTitle;
+            textLetterP = theme.letterContent;
+            
+            // Update welcome screen content
+            var welcomeTitle = document.querySelector('.welcome-content h1');
+            var welcomeSubtitle = document.querySelector('.welcome-content p');
+            if (welcomeTitle) welcomeTitle.textContent = theme.welcomeTitle;
+            if (welcomeSubtitle) welcomeSubtitle.textContent = theme.welcomeSubtitle;
+        }
+        
+        // Show welcome screen after selection (for Women's Day)
+        function showWelcomeScreen() {
+            // Confetti on selection
+            myConfetti({
+                particleCount: 80,
+                spread: 60,
+                origin: { y: 0.6 }
+            });
+            
+            // Hide selection screen
+            selectionScreen.classList.add('hidden');
+            
+            // Show welcome screen
+            setTimeout(function() {
+                selectionScreen.style.display = 'none';
+                welcomeScreen.style.display = 'flex';
+            }, 800);
+        }
+        
+        // Show birthday flow (skip welcome screen)
+        function showBirthdayFlow() {
+            // Confetti on selection
+            myConfetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            
+            // Hide selection screen
+            selectionScreen.classList.add('hidden');
+            
+            // Show music control button
+            musicControl.style.display = 'flex';
+            
+            // Start playing music
+            if (player && playerReady) {
+                player.playVideo();
+            }
+            
+            // Show birthday page
+            setTimeout(function() {
+                selectionScreen.style.display = 'none';
+                document.getElementById('birthdayPage').style.display = 'block';
+            }, 800);
+        }
+        
+        // Birthday cake click handler
+        var birthdayCake = document.getElementById('birthdayCake');
+        if (birthdayCake) {
+            birthdayCake.addEventListener('click', function() {
+                // Big confetti celebration!
+                myConfetti({
+                    particleCount: 150,
+                    spread: 100,
+                    origin: { y: 0.6 }
+                });
+                
+                // Open the letter
+                var letterForm = document.querySelector('.wrapperLetterForm');
+                if (letterForm) {
+                    letterForm.style.display = 'block';
+                    funcTimeoutLetter();
+                }
+            });
         }
         
         // Enter button click handler - START MUSIC
